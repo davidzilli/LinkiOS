@@ -7,6 +7,9 @@
 //
 
 #import "LNKAppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "LNKMapViewController.h"
+#import "Managers/LNKStationsManager.h"
 
 @implementation LNKAppDelegate
 
@@ -18,6 +21,14 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [GMSServices provideAPIKey:@"AIzaSyBTW0T-A6GKZSCO6QOj3T6rcyYGrEEvD7Y"];
+    
+    LNKMapViewController *mvc = [[LNKMapViewController alloc] init];
+    self.window.rootViewController = mvc;
+    
+    LNKStationsManager *stnmgr = [[LNKStationsManager alloc] init];
+    [stnmgr sync:1];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

@@ -22,6 +22,25 @@
 		633828CC19A104E80043AEC4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828B019A104E70043AEC4 /* CoreData.framework */; };
 		633828D419A104E80043AEC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633828D219A104E80043AEC4 /* InfoPlist.strings */; };
 		633828D619A104E80043AEC4 /* LinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 633828D519A104E80043AEC4 /* LinkTests.m */; };
+		633828E019A1058E0043AEC4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828DF19A1058E0043AEC4 /* GoogleMaps.framework */; };
+		633828E419A1062C0043AEC4 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 633828E319A1062C0043AEC4 /* GoogleMaps.bundle */; };
+		633828F019A106BE0043AEC4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828E519A106BD0043AEC4 /* AVFoundation.framework */; };
+		633828F119A106BE0043AEC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828E619A106BD0043AEC4 /* CoreLocation.framework */; };
+		633828F219A106BE0043AEC4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828E719A106BD0043AEC4 /* CoreText.framework */; };
+		633828F319A106BE0043AEC4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828E819A106BD0043AEC4 /* GLKit.framework */; };
+		633828F419A106BE0043AEC4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828E919A106BD0043AEC4 /* ImageIO.framework */; };
+		633828F519A106BE0043AEC4 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828EA19A106BE0043AEC4 /* libc++.dylib */; };
+		633828F619A106BE0043AEC4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828EB19A106BE0043AEC4 /* libicucore.dylib */; };
+		633828F719A106BE0043AEC4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828EC19A106BE0043AEC4 /* libz.dylib */; };
+		633828F819A106BE0043AEC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828ED19A106BE0043AEC4 /* OpenGLES.framework */; };
+		633828F919A106BE0043AEC4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828EE19A106BE0043AEC4 /* QuartzCore.framework */; };
+		633828FA19A106BE0043AEC4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828EF19A106BE0043AEC4 /* SystemConfiguration.framework */; };
+		6338290019A10AC90043AEC4 /* LNKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633828FE19A10AC90043AEC4 /* LNKMapViewController.m */; };
+		6338290119A10AC90043AEC4 /* LNKMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */; };
+		6338290519A10DF40043AEC4 /* LNKStationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290419A10DF40043AEC4 /* LNKStationsManager.m */; };
+		6338290A19A10EB70043AEC4 /* LNKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290919A10EB70043AEC4 /* LNKStation.m */; };
+		6338290D19A10EC30043AEC4 /* LNKSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290C19A10EC30043AEC4 /* LNKSystem.m */; };
+		6338291119A247BD0043AEC4 /* LNKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338291019A247BD0043AEC4 /* LNKAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +72,30 @@
 		633828D119A104E80043AEC4 /* LinkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LinkTests-Info.plist"; sourceTree = "<group>"; };
 		633828D319A104E80043AEC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		633828D519A104E80043AEC4 /* LinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkTests.m; sourceTree = "<group>"; };
+		633828DF19A1058E0043AEC4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		633828E319A1062C0043AEC4 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../../../../GoogleMaps-iOS-1.8.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		633828E519A106BD0043AEC4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		633828E619A106BD0043AEC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		633828E719A106BD0043AEC4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		633828E819A106BD0043AEC4 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		633828E919A106BD0043AEC4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		633828EA19A106BE0043AEC4 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		633828EB19A106BE0043AEC4 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		633828EC19A106BE0043AEC4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		633828ED19A106BE0043AEC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		633828EE19A106BE0043AEC4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		633828EF19A106BE0043AEC4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		633828FD19A10AC90043AEC4 /* LNKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKMapViewController.h; sourceTree = "<group>"; };
+		633828FE19A10AC90043AEC4 /* LNKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKMapViewController.m; sourceTree = "<group>"; };
+		633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LNKMapViewController.xib; sourceTree = "<group>"; };
+		6338290319A10DF40043AEC4 /* LNKStationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStationsManager.h; sourceTree = "<group>"; };
+		6338290419A10DF40043AEC4 /* LNKStationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStationsManager.m; sourceTree = "<group>"; };
+		6338290819A10EB70043AEC4 /* LNKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStation.h; sourceTree = "<group>"; };
+		6338290919A10EB70043AEC4 /* LNKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStation.m; sourceTree = "<group>"; };
+		6338290B19A10EC30043AEC4 /* LNKSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKSystem.h; sourceTree = "<group>"; };
+		6338290C19A10EC30043AEC4 /* LNKSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSystem.m; sourceTree = "<group>"; };
+		6338290F19A247BD0043AEC4 /* LNKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LNKAPI.h; path = API/LNKAPI.h; sourceTree = "<group>"; };
+		6338291019A247BD0043AEC4 /* LNKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LNKAPI.m; path = API/LNKAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +103,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633828AD19A104E70043AEC4 /* CoreGraphics.framework in Frameworks */,
+				633828F019A106BE0043AEC4 /* AVFoundation.framework in Frameworks */,
+				633828F119A106BE0043AEC4 /* CoreLocation.framework in Frameworks */,
+				633828F219A106BE0043AEC4 /* CoreText.framework in Frameworks */,
+				633828F319A106BE0043AEC4 /* GLKit.framework in Frameworks */,
+				633828F419A106BE0043AEC4 /* ImageIO.framework in Frameworks */,
+				633828F519A106BE0043AEC4 /* libc++.dylib in Frameworks */,
+				633828F619A106BE0043AEC4 /* libicucore.dylib in Frameworks */,
+				633828F719A106BE0043AEC4 /* libz.dylib in Frameworks */,
+				633828F819A106BE0043AEC4 /* OpenGLES.framework in Frameworks */,
+				633828F919A106BE0043AEC4 /* QuartzCore.framework in Frameworks */,
+				633828FA19A106BE0043AEC4 /* SystemConfiguration.framework in Frameworks */,
 				633828B119A104E70043AEC4 /* CoreData.framework in Frameworks */,
+				633828AD19A104E70043AEC4 /* CoreGraphics.framework in Frameworks */,
 				633828AF19A104E70043AEC4 /* UIKit.framework in Frameworks */,
+				633828E019A1058E0043AEC4 /* GoogleMaps.framework in Frameworks */,
 				633828AB19A104E70043AEC4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +158,19 @@
 		633828A919A104E70043AEC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				633828E519A106BD0043AEC4 /* AVFoundation.framework */,
+				633828E619A106BD0043AEC4 /* CoreLocation.framework */,
+				633828E719A106BD0043AEC4 /* CoreText.framework */,
+				633828E819A106BD0043AEC4 /* GLKit.framework */,
+				633828E919A106BD0043AEC4 /* ImageIO.framework */,
+				633828EA19A106BE0043AEC4 /* libc++.dylib */,
+				633828EB19A106BE0043AEC4 /* libicucore.dylib */,
+				633828EC19A106BE0043AEC4 /* libz.dylib */,
+				633828ED19A106BE0043AEC4 /* OpenGLES.framework */,
+				633828EE19A106BE0043AEC4 /* QuartzCore.framework */,
+				633828EF19A106BE0043AEC4 /* SystemConfiguration.framework */,
+				633828E319A1062C0043AEC4 /* GoogleMaps.bundle */,
+				633828DF19A1058E0043AEC4 /* GoogleMaps.framework */,
 				633828AA19A104E70043AEC4 /* Foundation.framework */,
 				633828AC19A104E70043AEC4 /* CoreGraphics.framework */,
 				633828AE19A104E70043AEC4 /* UIKit.framework */,
@@ -115,8 +183,15 @@
 		633828B219A104E70043AEC4 /* Link */ = {
 			isa = PBXGroup;
 			children = (
+				6338290E19A247AA0043AEC4 /* API */,
+				6338290619A10EA10043AEC4 /* Model */,
+				6338290719A10EA10043AEC4 /* ViewControllers */,
+				6338290219A10DD40043AEC4 /* Managers */,
 				633828BB19A104E70043AEC4 /* LNKAppDelegate.h */,
 				633828BC19A104E70043AEC4 /* LNKAppDelegate.m */,
+				633828FD19A10AC90043AEC4 /* LNKMapViewController.h */,
+				633828FE19A10AC90043AEC4 /* LNKMapViewController.m */,
+				633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */,
 				633828C119A104E70043AEC4 /* Images.xcassets */,
 				633828BE19A104E70043AEC4 /* Link.xcdatamodeld */,
 				633828B319A104E70043AEC4 /* Supporting Files */,
@@ -151,6 +226,42 @@
 				633828D219A104E80043AEC4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6338290219A10DD40043AEC4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6338290319A10DF40043AEC4 /* LNKStationsManager.h */,
+				6338290419A10DF40043AEC4 /* LNKStationsManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		6338290619A10EA10043AEC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6338290819A10EB70043AEC4 /* LNKStation.h */,
+				6338290919A10EB70043AEC4 /* LNKStation.m */,
+				6338290B19A10EC30043AEC4 /* LNKSystem.h */,
+				6338290C19A10EC30043AEC4 /* LNKSystem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6338290719A10EA10043AEC4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6338290E19A247AA0043AEC4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6338290F19A247BD0043AEC4 /* LNKAPI.h */,
+				6338291019A247BD0043AEC4 /* LNKAPI.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +340,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633828E419A1062C0043AEC4 /* GoogleMaps.bundle in Resources */,
 				633828B719A104E70043AEC4 /* InfoPlist.strings in Resources */,
+				6338290119A10AC90043AEC4 /* LNKMapViewController.xib in Resources */,
 				633828C219A104E70043AEC4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,9 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6338290519A10DF40043AEC4 /* LNKStationsManager.m in Sources */,
 				633828C019A104E70043AEC4 /* Link.xcdatamodeld in Sources */,
+				6338291119A247BD0043AEC4 /* LNKAPI.m in Sources */,
+				6338290A19A10EB70043AEC4 /* LNKStation.m in Sources */,
 				633828BD19A104E70043AEC4 /* LNKAppDelegate.m in Sources */,
+				6338290D19A10EC30043AEC4 /* LNKSystem.m in Sources */,
 				633828B919A104E70043AEC4 /* main.m in Sources */,
+				6338290019A10AC90043AEC4 /* LNKMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,9 +486,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Link/Link-Prefix.pch";
 				INFOPLIST_FILE = "Link/Link-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -381,9 +504,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Link/Link-Prefix.pch";
 				INFOPLIST_FILE = "Link/Link-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -448,6 +576,7 @@
 				633828DB19A104E80043AEC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		633828DC19A104E80043AEC4 /* Build configuration list for PBXNativeTarget "LinkTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +585,7 @@
 				633828DE19A104E80043AEC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
