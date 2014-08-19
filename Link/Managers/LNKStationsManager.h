@@ -12,7 +12,6 @@
 @interface LNKStationsManager : NSObject
 
 -(void)sync:(int)system_id;
--(void)handleResponse:(NSURLResponse *) response withData:(NSData *) data withError:(NSError *) error;
 
 @property (nonatomic, strong) LNKAPI* API;
 

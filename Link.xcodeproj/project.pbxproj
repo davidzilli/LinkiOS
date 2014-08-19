@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630BCE6819A3F2FB008866DE /* LNKSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE6719A3F2FB008866DE /* LNKSystem.m */; };
+		630BCE6E19A3F6E6008866DE /* LNKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE6D19A3F6E6008866DE /* LNKStation.m */; };
 		633828AB19A104E70043AEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AA19A104E70043AEC4 /* Foundation.framework */; };
 		633828AD19A104E70043AEC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AC19A104E70043AEC4 /* CoreGraphics.framework */; };
 		633828AF19A104E70043AEC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AE19A104E70043AEC4 /* UIKit.framework */; };
@@ -38,9 +40,8 @@
 		6338290019A10AC90043AEC4 /* LNKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633828FE19A10AC90043AEC4 /* LNKMapViewController.m */; };
 		6338290119A10AC90043AEC4 /* LNKMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */; };
 		6338290519A10DF40043AEC4 /* LNKStationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290419A10DF40043AEC4 /* LNKStationsManager.m */; };
-		6338290A19A10EB70043AEC4 /* LNKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290919A10EB70043AEC4 /* LNKStation.m */; };
-		6338290D19A10EC30043AEC4 /* LNKSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338290C19A10EC30043AEC4 /* LNKSystem.m */; };
 		6338291119A247BD0043AEC4 /* LNKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6338291019A247BD0043AEC4 /* LNKAPI.m */; };
+		63D3300E19A3D77D00021C8C /* LNKSystemsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D3300D19A3D77D00021C8C /* LNKSystemsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		630BCE6619A3F2FB008866DE /* LNKSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKSystem.h; sourceTree = "<group>"; };
+		630BCE6719A3F2FB008866DE /* LNKSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSystem.m; sourceTree = "<group>"; };
+		630BCE6C19A3F6E6008866DE /* LNKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStation.h; sourceTree = "<group>"; };
+		630BCE6D19A3F6E6008866DE /* LNKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStation.m; sourceTree = "<group>"; };
 		633828A719A104E70043AEC4 /* Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Link.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633828AA19A104E70043AEC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		633828AC19A104E70043AEC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,17 +90,15 @@
 		633828ED19A106BE0043AEC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		633828EE19A106BE0043AEC4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		633828EF19A106BE0043AEC4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		633828FD19A10AC90043AEC4 /* LNKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKMapViewController.h; sourceTree = "<group>"; };
-		633828FE19A10AC90043AEC4 /* LNKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKMapViewController.m; sourceTree = "<group>"; };
-		633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LNKMapViewController.xib; sourceTree = "<group>"; };
+		633828FD19A10AC90043AEC4 /* LNKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LNKMapViewController.h; path = ../LNKMapViewController.h; sourceTree = "<group>"; };
+		633828FE19A10AC90043AEC4 /* LNKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LNKMapViewController.m; path = ../LNKMapViewController.m; sourceTree = "<group>"; };
+		633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LNKMapViewController.xib; path = ../LNKMapViewController.xib; sourceTree = "<group>"; };
 		6338290319A10DF40043AEC4 /* LNKStationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStationsManager.h; sourceTree = "<group>"; };
 		6338290419A10DF40043AEC4 /* LNKStationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStationsManager.m; sourceTree = "<group>"; };
-		6338290819A10EB70043AEC4 /* LNKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStation.h; sourceTree = "<group>"; };
-		6338290919A10EB70043AEC4 /* LNKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStation.m; sourceTree = "<group>"; };
-		6338290B19A10EC30043AEC4 /* LNKSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKSystem.h; sourceTree = "<group>"; };
-		6338290C19A10EC30043AEC4 /* LNKSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSystem.m; sourceTree = "<group>"; };
 		6338290F19A247BD0043AEC4 /* LNKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LNKAPI.h; path = API/LNKAPI.h; sourceTree = "<group>"; };
 		6338291019A247BD0043AEC4 /* LNKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LNKAPI.m; path = API/LNKAPI.m; sourceTree = "<group>"; };
+		63D3300C19A3D77D00021C8C /* LNKSystemsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKSystemsManager.h; sourceTree = "<group>"; };
+		63D3300D19A3D77D00021C8C /* LNKSystemsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSystemsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630BCE5F19A3F19A008866DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				630BCE6C19A3F6E6008866DE /* LNKStation.h */,
+				630BCE6D19A3F6E6008866DE /* LNKStation.m */,
+				630BCE6619A3F2FB008866DE /* LNKSystem.h */,
+				630BCE6719A3F2FB008866DE /* LNKSystem.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		6338289E19A104E70043AEC4 = {
 			isa = PBXGroup;
 			children = (
@@ -183,15 +197,12 @@
 		633828B219A104E70043AEC4 /* Link */ = {
 			isa = PBXGroup;
 			children = (
+				630BCE5F19A3F19A008866DE /* Model */,
 				6338290E19A247AA0043AEC4 /* API */,
-				6338290619A10EA10043AEC4 /* Model */,
 				6338290719A10EA10043AEC4 /* ViewControllers */,
 				6338290219A10DD40043AEC4 /* Managers */,
 				633828BB19A104E70043AEC4 /* LNKAppDelegate.h */,
 				633828BC19A104E70043AEC4 /* LNKAppDelegate.m */,
-				633828FD19A10AC90043AEC4 /* LNKMapViewController.h */,
-				633828FE19A10AC90043AEC4 /* LNKMapViewController.m */,
-				633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */,
 				633828C119A104E70043AEC4 /* Images.xcassets */,
 				633828BE19A104E70043AEC4 /* Link.xcdatamodeld */,
 				633828B319A104E70043AEC4 /* Supporting Files */,
@@ -233,24 +244,18 @@
 			children = (
 				6338290319A10DF40043AEC4 /* LNKStationsManager.h */,
 				6338290419A10DF40043AEC4 /* LNKStationsManager.m */,
+				63D3300C19A3D77D00021C8C /* LNKSystemsManager.h */,
+				63D3300D19A3D77D00021C8C /* LNKSystemsManager.m */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		6338290619A10EA10043AEC4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6338290819A10EB70043AEC4 /* LNKStation.h */,
-				6338290919A10EB70043AEC4 /* LNKStation.m */,
-				6338290B19A10EC30043AEC4 /* LNKSystem.h */,
-				6338290C19A10EC30043AEC4 /* LNKSystem.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		6338290719A10EA10043AEC4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				633828FD19A10AC90043AEC4 /* LNKMapViewController.h */,
+				633828FE19A10AC90043AEC4 /* LNKMapViewController.m */,
+				633828FF19A10AC90043AEC4 /* LNKMapViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -365,11 +370,12 @@
 				6338290519A10DF40043AEC4 /* LNKStationsManager.m in Sources */,
 				633828C019A104E70043AEC4 /* Link.xcdatamodeld in Sources */,
 				6338291119A247BD0043AEC4 /* LNKAPI.m in Sources */,
-				6338290A19A10EB70043AEC4 /* LNKStation.m in Sources */,
 				633828BD19A104E70043AEC4 /* LNKAppDelegate.m in Sources */,
-				6338290D19A10EC30043AEC4 /* LNKSystem.m in Sources */,
+				63D3300E19A3D77D00021C8C /* LNKSystemsManager.m in Sources */,
 				633828B919A104E70043AEC4 /* main.m in Sources */,
+				630BCE6819A3F2FB008866DE /* LNKSystem.m in Sources */,
 				6338290019A10AC90043AEC4 /* LNKMapViewController.m in Sources */,
+				630BCE6E19A3F6E6008866DE /* LNKStation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

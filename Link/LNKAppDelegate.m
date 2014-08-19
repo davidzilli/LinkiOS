@@ -10,6 +10,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "LNKMapViewController.h"
 #import "Managers/LNKStationsManager.h"
+#import "LNKSystemsManager.h"
+#import "LNKSystem.h"
+#import "LNKStation.h"
 
 @implementation LNKAppDelegate
 
@@ -26,8 +29,47 @@
     LNKMapViewController *mvc = [[LNKMapViewController alloc] init];
     self.window.rootViewController = mvc;
     
-    LNKStationsManager *stnmgr = [[LNKStationsManager alloc] init];
-    [stnmgr sync:1];
+//    LNKStationsManager *stnmgr = [[LNKStationsManager alloc] init];
+//    [stnmgr sync:1];
+//    
+    LNKSystemsManager *sysmng = [[LNKSystemsManager alloc] init];
+    [sysmng sync];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    LNKSystem *system = [NSEntityDescription insertNewObjectForEntityForName:@"LNKSystem"
+                                                            inManagedObjectContext:context];
+    system.id = [NSNumber numberWithInt:1];
+    system.name = @"TEST SYSTEM";
+    system.latitude = [NSNumber numberWithFloat:49.939523];
+    system.longitude = [NSNumber numberWithFloat:-82.432993];
+    
+    LNKStation *station = [NSEntityDescription insertNewObjectForEntityForName:@"LNKStation"
+                                                             inManagedObjectContext:context];
+    station.id = [NSNumber numberWithInt:3];
+    station.name = @"Test Station";
+    station.status = @"active";
+    station.system = system;
+    
+    NSMutableSet *stations_array = [[NSMutableSet alloc] init];
+    [stations_array addObject:station];
+    system.stations = stations_array;
+    
+    NSError *error;
+    if (![context save:&error]) {
+//        NSLog(@"ERROR SAVING: %@", [error localizedDescription]);
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LNKSystem"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedSystems = [context executeFetchRequest:fetchRequest error:&error];
+    for (LNKSystem *system in fetchedSystems) {
+//        NSLog(@"%@", [system description]);
+        for (LNKStation *station in system.stations) {
+//            NSLog(@"%@", [station description]);
+        }
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
