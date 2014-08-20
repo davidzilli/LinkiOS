@@ -36,4 +36,20 @@
     return self;
 }
 
+-(NSString *)description
+{
+    NSMutableString *description_string = [[NSMutableString alloc] init];
+    [description_string appendString:[NSString stringWithFormat:@"ID: %@\n", self.id]];
+    [description_string appendString:[NSString stringWithFormat:@"Name: %@\n", self.name]];
+    [description_string appendString:[NSString stringWithFormat:@"Owner Id: %@\n", self.owner_id]];
+    [description_string appendString:[NSString stringWithFormat:@"Lat: %@\n", self.latitude]];
+    [description_string appendString:[NSString stringWithFormat:@"Lng: %@\n", self.longitude]];
+    [description_string appendString:[NSString stringWithFormat:@"STATIONS:\n"]];
+    for (LNKStation *station in self.stations) {
+        [description_string appendString:[station description]];
+    }
+    
+    return description_string;
+}
+
 @end

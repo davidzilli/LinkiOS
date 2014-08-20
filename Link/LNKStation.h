@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "LNKCoreDataObject.h"
-
 @class LNKSystem;
 
-@interface LNKStation : LNKCoreDataObject
+@interface LNKStation : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * bikeCount;
 @property (nonatomic, retain) NSNumber * bikeSpaces;
@@ -23,5 +21,7 @@
 @property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSNumber * vehicle_types_id;
 @property (nonatomic, retain) LNKSystem *system;
+
+-(instancetype) fillWithDictionary:(NSDictionary *)dictionary_;
 
 @end

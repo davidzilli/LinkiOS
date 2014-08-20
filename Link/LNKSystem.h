@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "LNKStation.h"
-#import "LNKCoreDataObject.h"
 
 @class LNKStation;
 
-@interface LNKSystem : LNKCoreDataObject
+@interface LNKSystem : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSNumber * latitude;

@@ -8,6 +8,9 @@
 
 #import "LNKMapViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "LNKSystemsManager.h"
+#import "LNKSystem.h"
+#import "LNKMarkerUtils.h"
 
 @interface LNKMapViewController ()
 
@@ -31,20 +34,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /** Get a System */
+    LNKSystemsManager *sysmgr = [[LNKSystemsManager alloc] init];
+    LNKSystem *system = [sysmgr getSystemForID:[NSNumber numberWithInt:1]];
+    
+    
     // Do any additional setup after loading the view from its nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[system.latitude doubleValue]
+                                                            longitude:[system.longitude doubleValue]
+                                                                 zoom:12];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
     
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView_;
+    /** Add Markers */
+    NSSet *stations = [sysmgr getStationsForSystem:system];
+    NSPredicate *active_predicate = [NSPredicate predicateWithFormat:@"status == %@", @"active"];
+    NSSet *active_stations = [stations filteredSetUsingPredicate:active_predicate];
+    for (LNKStation *station in active_stations) {
+        GMSMarker *marker = [LNKMarkerUtils markerFromStation:station];
+        [marker setMap:mapView_];
+    }
 }
 
 - (void)didReceiveMemoryWarning

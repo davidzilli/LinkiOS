@@ -15,6 +15,8 @@
 -(void) sync;
 -(NSArray *)fetchSystems;
 -(LNKSystem *) getSystemForID:(NSNumber *)id_;
+-(NSSet *)getStationsForSystem:(LNKSystem *)system_;
+-(LNKStation *) getStationForID:(NSNumber *)id_ fromSystem:(LNKSystem *)system_;
 
 @property (nonatomic, strong) LNKAPI* API;
 

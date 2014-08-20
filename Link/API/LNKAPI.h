@@ -23,6 +23,8 @@ extern NSString *API_ENDPOINT;
 - (NSData *)createPostData:(NSString *)fieldsJSON;
 - (NSString *)getURLEncodedStringForPost:(NSDictionary *)dictionary_;
 - (void)sendPost:(NSData *)data toURL:(NSString *)url;
-
+- (id) deserializeData:(NSData *)data;
+- (BOOL) checkResponseIsValid:(id)data;
+-(id)getResponseObject:(id)data;
 
 @end

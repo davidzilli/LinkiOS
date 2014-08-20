@@ -10,6 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 NSString *API_ENDPOINT = @"http://54.235.245.3/";
+
 NSString *URI_GET_STATIONS = @"api/get_station_locations";
 NSString *URI_GET_SYSTEMS = @"api/fetch_systems";
 
@@ -77,6 +78,39 @@ NSString *URI_GET_SYSTEMS = @"api/fetch_systems";
                                        queue:queue
                            completionHandler:self.handlePostBlock];
     
+}
+
+- (id) deserializeData:(NSData *)data
+{
+    NSError *error;
+    id jsonObject = [NSJSONSerialization
+                     JSONObjectWithData:data
+                     options:NSJSONReadingAllowFragments
+                     error:&error];
+
+    if (jsonObject != nil && error == nil) {
+        NSLog(@"Succesfully deserialized");
+        return jsonObject;
+    }
+    
+    return nil;
+}
+
+- (BOOL) checkResponseIsValid:(id)data
+{
+    NSNumber *success = [data objectForKey:@"valid"];
+    if ([success boolValue]) {
+        NSLog(@"SUCCESS!");
+        return YES;
+    } else {
+        NSLog(@"FAILURE!");
+        return NO;
+    }
+}
+
+-(id)getResponseObject:(id)data
+{
+    return [data objectForKey:@"response"];
 }
 
 @end

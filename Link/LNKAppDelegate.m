@@ -9,7 +9,6 @@
 #import "LNKAppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "LNKMapViewController.h"
-#import "Managers/LNKStationsManager.h"
 #import "LNKSystemsManager.h"
 #import "LNKSystem.h"
 #import "LNKStation.h"
@@ -29,9 +28,6 @@
     LNKMapViewController *mvc = [[LNKMapViewController alloc] init];
     self.window.rootViewController = mvc;
     
-//    LNKStationsManager *stnmgr = [[LNKStationsManager alloc] init];
-//    [stnmgr sync:1];
-//    
     LNKSystemsManager *sysmng = [[LNKSystemsManager alloc] init];
     [sysmng sync];
     
