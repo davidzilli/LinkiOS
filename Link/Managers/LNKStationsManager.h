@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "LNKAPI.h"
+#import "LNKSystem.h"
+#import "LnkStation.h"
 
 @interface LNKStationsManager : NSObject
 

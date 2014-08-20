@@ -63,7 +63,7 @@ NSString *URI_GET_SYSTEMS = @"api/fetch_systems";
     NSMutableString *uri_string = [[NSMutableString alloc] init];
     [uri_string appendString:API_ENDPOINT];
     [uri_string appendString:url];
-    NSLog(uri_string);
+    NSLog(@"%@", uri_string);
     
     NSString *postLength = [NSString stringWithFormat:@"%d",[data length]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uri_string]];

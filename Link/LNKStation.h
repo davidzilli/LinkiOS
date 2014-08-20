@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "LNKCoreDataObject.h"
 
 @class LNKSystem;
 
-@interface LNKStation : NSManagedObject
+@interface LNKStation : LNKCoreDataObject
 
 @property (nonatomic, retain) NSNumber * bikeCount;
 @property (nonatomic, retain) NSNumber * bikeSpaces;

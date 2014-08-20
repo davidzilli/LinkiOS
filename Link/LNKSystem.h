@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "LNKStation.h"
+#import "LNKCoreDataObject.h"
 
 @class LNKStation;
 
-@interface LNKSystem : NSManagedObject
+@interface LNKSystem : LNKCoreDataObject
 
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSNumber * latitude;
@@ -20,6 +21,9 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * owner_id;
 @property (nonatomic, retain) NSSet *stations;
+
+-(instancetype) fillWithDictionary:(NSDictionary *)dictionary_;
+
 @end
 
 @interface LNKSystem (CoreDataGeneratedAccessors)

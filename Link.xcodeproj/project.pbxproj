@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		630BCE6819A3F2FB008866DE /* LNKSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE6719A3F2FB008866DE /* LNKSystem.m */; };
 		630BCE6E19A3F6E6008866DE /* LNKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE6D19A3F6E6008866DE /* LNKStation.m */; };
+		630BCE7119A4EF1D008866DE /* LNKCoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE7019A4EF1D008866DE /* LNKCoreDataObject.m */; };
 		633828AB19A104E70043AEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AA19A104E70043AEC4 /* Foundation.framework */; };
 		633828AD19A104E70043AEC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AC19A104E70043AEC4 /* CoreGraphics.framework */; };
 		633828AF19A104E70043AEC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AE19A104E70043AEC4 /* UIKit.framework */; };
@@ -59,6 +60,8 @@
 		630BCE6719A3F2FB008866DE /* LNKSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSystem.m; sourceTree = "<group>"; };
 		630BCE6C19A3F6E6008866DE /* LNKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKStation.h; sourceTree = "<group>"; };
 		630BCE6D19A3F6E6008866DE /* LNKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKStation.m; sourceTree = "<group>"; };
+		630BCE6F19A4EF1D008866DE /* LNKCoreDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKCoreDataObject.h; sourceTree = "<group>"; };
+		630BCE7019A4EF1D008866DE /* LNKCoreDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKCoreDataObject.m; sourceTree = "<group>"; };
 		633828A719A104E70043AEC4 /* Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Link.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633828AA19A104E70043AEC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		633828AC19A104E70043AEC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +149,8 @@
 				630BCE6D19A3F6E6008866DE /* LNKStation.m */,
 				630BCE6619A3F2FB008866DE /* LNKSystem.h */,
 				630BCE6719A3F2FB008866DE /* LNKSystem.m */,
+				630BCE6F19A4EF1D008866DE /* LNKCoreDataObject.h */,
+				630BCE7019A4EF1D008866DE /* LNKCoreDataObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				630BCE6819A3F2FB008866DE /* LNKSystem.m in Sources */,
 				6338290019A10AC90043AEC4 /* LNKMapViewController.m in Sources */,
 				630BCE6E19A3F6E6008866DE /* LNKStation.m in Sources */,
+				630BCE7119A4EF1D008866DE /* LNKCoreDataObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

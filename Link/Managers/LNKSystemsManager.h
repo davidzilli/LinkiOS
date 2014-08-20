@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LNKAPI.h"
+#import "LNKSystem.h"
 
 @interface LNKSystemsManager : NSObject
 
 -(void) sync;
+-(NSArray *)fetchSystems;
+-(LNKSystem *) getSystemForID:(NSNumber *)id_;
 
 @property (nonatomic, strong) LNKAPI* API;
 
