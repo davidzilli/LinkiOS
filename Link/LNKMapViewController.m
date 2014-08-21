@@ -20,6 +20,9 @@
     GMSMapView *mapView_;
 }
 
+@synthesize sysManager;
+@synthesize curSystem;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,18 +39,48 @@
     [super viewDidLoad];
     
     /** Get a System */
-    LNKSystemsManager *sysmgr = [[LNKSystemsManager alloc] init];
-    LNKSystem *system = [sysmgr getSystemForID:[NSNumber numberWithInt:1]];
+    sysManager = [[LNKSystemsManager alloc] init];
+    sysManager.delegate = self;
+    curSystem = [sysManager getSystemForID:[NSNumber numberWithInt:1]];
     
     
     // Do any additional setup after loading the view from its nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[system.latitude doubleValue]
-                                                            longitude:[system.longitude doubleValue]
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[curSystem.latitude doubleValue]
+                                                            longitude:[curSystem.longitude doubleValue]
                                                                  zoom:12];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
     
+    [self addMarkers];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(mapView_.bounds.size.width - 110, mapView_.bounds.size.height - 30, 100, 20);
+    button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    [button setTitle:@"Refresh" forState:UIControlStateNormal];
+    [mapView_ addSubview:button];
+    
+    [sysManager updateStationAvailabilityForSystem:curSystem];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) refreshStationAvailability
+{
+    NSLog(@"Refresh availability");
+    [sysManager updateStationAvailabilityForSystem:curSystem];
+}
+
+- (void) addMarkers
+{
+    [mapView_ clear];
+    LNKSystemsManager *sysmgr = [[LNKSystemsManager alloc] init];
+    LNKSystem *system = [sysmgr getSystemForID:[NSNumber numberWithInt:1]];
     /** Add Markers */
     NSSet *stations = [sysmgr getStationsForSystem:system];
     NSPredicate *active_predicate = [NSPredicate predicateWithFormat:@"status == %@", @"active"];
@@ -56,12 +89,18 @@
         GMSMarker *marker = [LNKMarkerUtils markerFromStation:station];
         [marker setMap:mapView_];
     }
+
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark Systems Manager Delegate functions
+-(void)stationAvailabilitySyncComplete:(BOOL)result
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Your code to run on the main queue/thread
+        NSLog(@"Delegate Method Fired!");
+        [self addMarkers];
+    });
+    
 }
 
 @end

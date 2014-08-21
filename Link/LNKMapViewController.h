@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LNKSystemsManager.h"
 
-@interface LNKMapViewController : UIViewController
+@interface LNKMapViewController : UIViewController <StationAvailabilitySyncCompleteDelegate>
+
+@property (nonatomic, strong) LNKSystemsManager *sysManager;
+@property (nonatomic, strong) LNKSystem *curSystem;
 
 @end

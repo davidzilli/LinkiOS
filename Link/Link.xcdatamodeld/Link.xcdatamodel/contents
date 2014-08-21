@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="LNKStation" representedClassName="LNKStation" syncable="YES">
-        <attribute name="bikeCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="bikeSpaces" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -20,7 +18,7 @@
         <relationship name="stations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LNKStation" inverseName="system" inverseEntity="LNKStation" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LNKStation" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="LNKStation" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="LNKSystem" positionX="-54" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

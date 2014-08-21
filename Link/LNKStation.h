@@ -23,5 +23,5 @@
 @property (nonatomic, retain) LNKSystem *system;
 
 -(instancetype) fillWithDictionary:(NSDictionary *)dictionary_;
-
+-(instancetype) updateAvailabilityWithDictionary:(NSDictionary *)dictionary_;
 @end

@@ -12,8 +12,8 @@
 
 @implementation LNKStation
 
-@dynamic bikeCount;
-@dynamic bikeSpaces;
+@synthesize bikeCount;
+@synthesize bikeSpaces;
 @dynamic id;
 @dynamic latitude;
 @dynamic longitude;
@@ -38,10 +38,25 @@
     return self;
 }
 
+-(instancetype) updateAvailabilityWithDictionary:(NSDictionary *)dictionary_
+{
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    if (self) {
+        self.status = [dictionary_ objectForKey:@"status"];
+        self.bikeCount = [numFormatter numberFromString:[dictionary_ objectForKey:@"vehicle_count"]];
+        self.bikeSpaces = [numFormatter numberFromString:[dictionary_ objectForKey:@"space_count"]];
+
+    }
+    
+    return self;
+}
+
 - (NSString *) description
 {
     NSMutableString *description_string = [[NSMutableString alloc] init];
-    [description_string appendString:[NSString stringWithFormat:@"ID: %@", self.id]];
+    [description_string appendString:[NSString stringWithFormat:@"ID: %@\n", self.id]];
     [description_string appendString:[NSString stringWithFormat:@"Name: %@\n", self.name]];
     [description_string appendString:[NSString stringWithFormat:@"Status: %@\n", self.status]];
     [description_string appendString:[NSString stringWithFormat:@"Lat: %@\n", self.latitude]];

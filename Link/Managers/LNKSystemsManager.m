@@ -12,6 +12,7 @@
 @implementation LNKSystemsManager
 
 @synthesize API;
+@synthesize delegate;
 
 /** Sync Systems with server */
 
@@ -29,17 +30,26 @@
             
             if (!jsonData) {
                 NSLog(@"ERROR DESERIALIZING");
+                if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
                 return;
             }
             
             if (![API checkResponseIsValid:jsonData]) {
                 NSLog(@"INVALID RESPONSE FROM SERVER");
+                if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
                 return;
             }
             
             id responseObject = [API getResponseObject:jsonData];
             if (!responseObject) {
                 NSLog(@"NO RESPONSE OBJECT");
+                if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
                 return;
             }
             
@@ -71,6 +81,16 @@
                 if (![[AppDelegate managedObjectContext] save:&error]) {
                     NSLog(@"ERROR SAVING: %@", [error localizedDescription]);
                 }
+                
+            }
+            
+            if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                [delegate systemSyncComplete:YES];
+            }
+        } else {
+            NSLog(@"%@", [error localizedDescription]);
+            if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                [delegate systemSyncComplete:NO];
             }
         }
         
@@ -146,6 +166,8 @@
                 }
             }
             
+            [self updateStationAvailabilityForSystem:system_];
+            
             if (![[AppDelegate managedObjectContext] save:&error]) {
                 NSLog(@"ERROR SAVING: %@", [error localizedDescription]);
             }
@@ -154,6 +176,88 @@
     
     NSString *URL = URI_GET_STATIONS;
     [API sendPost:postData toURL:URL];
+}
+
+- (void) updateStationAvailabilityForSystem:(LNKSystem *)system_
+{
+    if(!system_) {
+        NSLog(@"Sytem is null");
+        return;
+    }
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    API = [[LNKAPI alloc] init];
+    
+    /** Create fields JSON String */
+    NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
+    NSError *error;
+    NSNumber *system_id = system_.id;
+    [fields setObject:system_id forKey:@"system_id"];
+    NSData *fieldsJSON = [NSJSONSerialization dataWithJSONObject:fields options:0 error:&error];
+    NSString *fieldsJSONString = [[NSString alloc] initWithData:fieldsJSON encoding:NSUTF8StringEncoding];
+    
+    NSData *postData = [API createPostData:fieldsJSONString];
+
+    API.handlePostBlock = ^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"CALL BACK");
+        if ([data length] > 0 && error == nil) {
+            
+            id jsonData = [API deserializeData:data];
+            
+            if (!jsonData) {
+                NSLog(@"ERROR DESERIALIZING");
+                if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
+                return;
+            }
+            
+            if (![API checkResponseIsValid:jsonData]) {
+                NSLog(@"INVALID RESPONSE FROM SERVER");
+                if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
+                return;
+            }
+            
+            id responseObject = [API getResponseObject:jsonData];
+            if (!responseObject) {
+                NSLog(@"NO RESPONSE OBJECT");if ([delegate respondsToSelector:@selector(systemSyncComplete:)]) {
+                    [delegate systemSyncComplete:NO];
+                }
+                return;
+            }
+            
+            NSArray *stations = [responseObject objectForKey:@"stations"];
+            NSLog(@"Fectched %d station(s)", [stations count]);
+            
+            for (NSDictionary *station_availability in stations) {
+               
+                NSNumber *station_id = [numFormatter numberFromString:[station_availability objectForKey:@"id"]];
+                LNKStation *new_station = [self getStationForID:station_id fromSystem:system_];
+                
+                if (!new_station) {
+                    /** Create new station and insert */
+                    NSLog(@"No Station exists to update");
+                } else {
+                    NSLog(@"Found station for ID:%@", station_id);
+                    [new_station updateAvailabilityWithDictionary:station_availability];
+                }
+            }
+            
+            if (![[AppDelegate managedObjectContext] save:&error]) {
+                NSLog(@"ERROR SAVING: %@", [error localizedDescription]);
+            }
+            
+            if ([delegate respondsToSelector:@selector(stationAvailabilitySyncComplete:)]) {
+                [delegate stationAvailabilitySyncComplete:YES];
+            }
+        }
+    };
+    
+    NSString *URL = URI_GET_STATION_AVAILABILITY;
+    [API sendPost:postData toURL:URL];
+    
 }
 
 -(NSArray *)fetchSystems

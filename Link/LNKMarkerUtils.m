@@ -21,9 +21,19 @@
     marker.position = CLLocationCoordinate2DMake([station_.latitude doubleValue], [station_.longitude doubleValue]);
     marker.title = station_.name;
     NSMutableString *snippet_string = [[NSMutableString alloc] init];
-    [snippet_string appendFormat:@"Bikes: %@", station_.bikeCount];
+    [snippet_string appendFormat:@"Bikes: %@ ", station_.bikeCount];
     [snippet_string appendFormat:@"Spaces: %d", [station_.bikeSpaces intValue] - [station_.bikeCount intValue]];
     marker.snippet = snippet_string;
+    
+    if ((station_.bikeCount == 0 && station_.bikeSpaces == 0) || [station_.status isEqualToString:@"disabled"]) {
+        marker.icon = [UIImage imageNamed:@"ic_rack_disabled"];
+    } else if ([station_.bikeCount isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        marker.icon = [UIImage imageNamed:@"ic_rack_empty"];
+    } else if ([station_.bikeSpaces intValue] == [station_.bikeCount intValue]) {
+        marker.icon = [UIImage imageNamed:@"ic_rack_full"];
+    } else {
+        marker.icon = [UIImage imageNamed:@"ic_rack_perfect"];
+    }
     
     return marker;
 }

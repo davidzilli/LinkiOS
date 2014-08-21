@@ -10,6 +10,7 @@
 
 extern NSString *URI_GET_STATIONS;
 extern NSString *URI_GET_SYSTEMS;
+extern NSString *URI_GET_STATION_AVAILABILITY;
 extern NSString *API_ENDPOINT;
 
 @interface LNKAPI : NSObject

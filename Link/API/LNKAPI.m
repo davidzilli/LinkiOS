@@ -13,8 +13,19 @@ NSString *API_ENDPOINT = @"http://54.235.245.3/";
 
 NSString *URI_GET_STATIONS = @"api/get_station_locations";
 NSString *URI_GET_SYSTEMS = @"api/fetch_systems";
+NSString *URI_GET_STATION_AVAILABILITY = @"api/update_rack_availability";
+
+@interface LNKAPI()
+
+@property (nonatomic, strong) NSMutableURLRequest *urlRequest;
+@property (nonatomic, strong) NSURLConnection *connection;
+
+@end
 
 @implementation LNKAPI
+
+@synthesize urlRequest;
+@synthesize connection;
 
 - (NSString*)getHash:(NSString *)password{
     const char* str = [password UTF8String];
@@ -67,17 +78,20 @@ NSString *URI_GET_SYSTEMS = @"api/fetch_systems";
     NSLog(@"%@", uri_string);
     
     NSString *postLength = [NSString stringWithFormat:@"%d",[data length]];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uri_string]];
+    urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uri_string]];
     [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setTimeoutInterval:10.0f];
     [urlRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setHTTPBody:data];
     NSLog(@"Request body %@", [[NSString alloc] initWithData:[urlRequest HTTPBody] encoding:NSUTF8StringEncoding]);
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+//    [connection start];
+    
     [NSURLConnection sendAsynchronousRequest:urlRequest
                                        queue:queue
                            completionHandler:self.handlePostBlock];
-    
 }
 
 - (id) deserializeData:(NSData *)data
