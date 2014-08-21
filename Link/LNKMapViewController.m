@@ -41,7 +41,8 @@
     /** Get a System */
     sysManager = [[LNKSystemsManager alloc] init];
     sysManager.delegate = self;
-    curSystem = [sysManager getSystemForID:[NSNumber numberWithInt:1]];
+    NSNumber *default_system_id = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_system_id"];
+    curSystem = [sysManager getSystemForID:default_system_id];
     
     
     // Do any additional setup after loading the view from its nib.

@@ -15,6 +15,8 @@
 		630BCE8119A6435C008866DE /* LNKSelectSystemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630BCE7A19A636DF008866DE /* LNKSelectSystemViewController.xib */; };
 		630BCE8519A64444008866DE /* LNKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE8319A64444008866DE /* LNKMapViewController.m */; };
 		630BCE8619A64444008866DE /* LNKMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630BCE8419A64444008866DE /* LNKMapViewController.xib */; };
+		630BCE8A19A67EC2008866DE /* LNKSyncSystemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630BCE8819A67EC2008866DE /* LNKSyncSystemsViewController.m */; };
+		630BCE8B19A67EC2008866DE /* LNKSyncSystemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630BCE8919A67EC2008866DE /* LNKSyncSystemsViewController.xib */; };
 		633828AB19A104E70043AEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AA19A104E70043AEC4 /* Foundation.framework */; };
 		633828AD19A104E70043AEC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AC19A104E70043AEC4 /* CoreGraphics.framework */; };
 		633828AF19A104E70043AEC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633828AE19A104E70043AEC4 /* UIKit.framework */; };
@@ -72,6 +74,9 @@
 		630BCE8219A64444008866DE /* LNKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKMapViewController.h; sourceTree = "<group>"; };
 		630BCE8319A64444008866DE /* LNKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKMapViewController.m; sourceTree = "<group>"; };
 		630BCE8419A64444008866DE /* LNKMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LNKMapViewController.xib; sourceTree = "<group>"; };
+		630BCE8719A67EC2008866DE /* LNKSyncSystemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNKSyncSystemsViewController.h; sourceTree = "<group>"; };
+		630BCE8819A67EC2008866DE /* LNKSyncSystemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNKSyncSystemsViewController.m; sourceTree = "<group>"; };
+		630BCE8919A67EC2008866DE /* LNKSyncSystemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LNKSyncSystemsViewController.xib; sourceTree = "<group>"; };
 		633828A719A104E70043AEC4 /* Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Link.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633828AA19A104E70043AEC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		633828AC19A104E70043AEC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -239,6 +244,9 @@
 				633828C119A104E70043AEC4 /* Images.xcassets */,
 				633828BE19A104E70043AEC4 /* Link.xcdatamodeld */,
 				633828B319A104E70043AEC4 /* Supporting Files */,
+				630BCE8719A67EC2008866DE /* LNKSyncSystemsViewController.h */,
+				630BCE8819A67EC2008866DE /* LNKSyncSystemsViewController.m */,
+				630BCE8919A67EC2008866DE /* LNKSyncSystemsViewController.xib */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 			files = (
 				633828E419A1062C0043AEC4 /* GoogleMaps.bundle in Resources */,
 				633828B719A104E70043AEC4 /* InfoPlist.strings in Resources */,
+				630BCE8B19A67EC2008866DE /* LNKSyncSystemsViewController.xib in Resources */,
 				630BCE8119A6435C008866DE /* LNKSelectSystemViewController.xib in Resources */,
 				630BCE8619A64444008866DE /* LNKMapViewController.xib in Resources */,
 				633828C219A104E70043AEC4 /* Images.xcassets in Resources */,
@@ -391,6 +400,7 @@
 			files = (
 				633828C019A104E70043AEC4 /* Link.xcdatamodeld in Sources */,
 				6338291119A247BD0043AEC4 /* LNKAPI.m in Sources */,
+				630BCE8A19A67EC2008866DE /* LNKSyncSystemsViewController.m in Sources */,
 				633828BD19A104E70043AEC4 /* LNKAppDelegate.m in Sources */,
 				63D3300E19A3D77D00021C8C /* LNKSystemsManager.m in Sources */,
 				633828B919A104E70043AEC4 /* main.m in Sources */,

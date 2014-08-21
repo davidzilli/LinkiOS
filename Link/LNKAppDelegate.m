@@ -14,6 +14,7 @@
 #import "LNKStation.h"
 #import "LNKCircleBackgroundView.h"
 #import "LNKSelectSystemViewController.h"
+#import "LNKSyncSystemsViewController.h"
 
 @implementation LNKAppDelegate
 
@@ -27,17 +28,13 @@
     // Override point for customization after application launch.
     [GMSServices provideAPIKey:@"AIzaSyBTW0T-A6GKZSCO6QOj3T6rcyYGrEEvD7Y"];
     
-//    LNKMapViewController *mvc = [[LNKMapViewController alloc] init];
-//    self.window.rootViewController = mvc;
-    
-//    CGRect screenRect = self.window.bounds;
-//    CGRect bigRect = screenRect;
-//    
-//    LNKCircleBackgroundView *circleBackground = [[LNKCircleBackgroundView alloc] initWithFrame:bigRect];
-//    [self.window addSubview:circleBackground];
-    
-    LNKSelectSystemViewController *sscv = [[LNKSelectSystemViewController alloc] init];
-    self.window.rootViewController = sscv;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"default_system_id"]){
+        LNKMapViewController *mvc = [[LNKMapViewController alloc] init];
+        self.window.rootViewController = mvc;
+    } else {
+        LNKSyncSystemsViewController *sscv = [[LNKSyncSystemsViewController alloc] init];
+        self.window.rootViewController = sscv;
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
