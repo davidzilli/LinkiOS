@@ -55,20 +55,35 @@
     
     [self addMarkers];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(mapView_.bounds.size.width - 110, mapView_.bounds.size.height - 30, 100, 20);
-    button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-    [button setTitle:@"Refresh" forState:UIControlStateNormal];
-    [mapView_ addSubview:button];
-    
     [sysManager updateStationAvailabilityForSystem:curSystem];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"ic_refresh_floating"]  forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"ic_refresh_floating_sel"] forState:UIControlStateHighlighted];
+    [button sizeToFit];
+    button.center = CGPointMake(screenRect.size.width - (button.bounds.size.width / 2) - 10, screenRect.size.height - (button.bounds.size.height / 2) - 10);
+    [button addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
+    //button.frame = CGRectMake(mapView_.bounds.size.width - 110, mapView_.bounds.size.height - 30, 100, 20);
+    //button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    //[button setTitle:@"Refresh" forState:UIControlStateNormal];
+    [mapView_ addSubview:button];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL) shouldAutorotate
+{
+    return NO;
 }
 
 - (void) refreshStationAvailability

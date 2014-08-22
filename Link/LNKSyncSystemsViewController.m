@@ -64,6 +64,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL) shouldAutorotate
+{
+    return NO;
+}
+
 -(void)systemSyncComplete:(BOOL)result
 {
     dispatch_async(dispatch_get_main_queue(), ^{
