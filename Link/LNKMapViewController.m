@@ -13,7 +13,10 @@
 #import "LNKMarkerUtils.h"
 
 @interface LNKMapViewController ()
+@property (nonatomic, strong) NSArray *systemArray;
+@property (nonatomic, strong) UIButton *systemsButton;
 
+-(IBAction)showSystems:(id)sender;
 @end
 
 @implementation LNKMapViewController {
@@ -22,6 +25,8 @@
 
 @synthesize sysManager;
 @synthesize curSystem;
+@synthesize systemsButton;
+@synthesize systemArray;
 
 
 
@@ -38,12 +43,14 @@
 {
     [super viewDidLoad];
     
-    /** Get a System */
+    /** Get default System */
     sysManager = [[LNKSystemsManager alloc] init];
     sysManager.delegate = self;
     NSNumber *default_system_id = [[NSUserDefaults standardUserDefaults] objectForKey:@"default_system_id"];
     curSystem = [sysManager getSystemForID:default_system_id];
     
+    /*Get all systems loaded into array */
+    systemArray = [sysManager fetchSystems];
     
     // Do any additional setup after loading the view from its nib.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[curSystem.latitude doubleValue]
@@ -62,17 +69,33 @@
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"ic_refresh_floating"]  forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"ic_refresh_floating_sel"] forState:UIControlStateHighlighted];
-    [button sizeToFit];
-    button.center = CGPointMake(screenRect.size.width - (button.bounds.size.width / 2) - 10, screenRect.size.height - (button.bounds.size.height / 2) - 10);
-    [button addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
-    //button.frame = CGRectMake(mapView_.bounds.size.width - 110, mapView_.bounds.size.height - 30, 100, 20);
-    //button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-    //[button setTitle:@"Refresh" forState:UIControlStateNormal];
-    [mapView_ addSubview:button];
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [refreshButton setImage:[UIImage imageNamed:@"ic_refresh_floating"]  forState:UIControlStateNormal];
+    [refreshButton setImage:[UIImage imageNamed:@"ic_refresh_floating_sel"] forState:UIControlStateHighlighted];
+    [refreshButton sizeToFit];
+    refreshButton.center = CGPointMake(screenRect.size.width - (refreshButton.bounds.size.width / 2) - 10, screenRect.size.height - (refreshButton.bounds.size.height / 2) - 10);
+    [refreshButton addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
+    [mapView_ addSubview:refreshButton];
+    
+    UIButton *locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [locationButton setImage:[UIImage imageNamed:@"ic_location_floating_icon"] forState:UIControlStateNormal];
+    [locationButton setImage:[UIImage imageNamed:@"ic_location_floating_icon_sel"] forState:UIControlStateHighlighted];
+    [locationButton sizeToFit];
+    locationButton.center = CGPointMake(locationButton.bounds.size.width / 2 + 10, screenRect.size.height - (locationButton.bounds.size.height / 2) - 10);
+    [locationButton addTarget:self action:@selector(moveCameraToLocation) forControlEvents:UIControlEventTouchUpInside];
+    [mapView_ addSubview:locationButton];
 
+    systemsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [systemsButton addTarget:self action:@selector(showSystems:) forControlEvents:UIControlEventTouchUpInside];
+    [systemsButton setBackgroundColor:[UIColor colorWithRed:0.396 green:0.757 blue:0.761 alpha:1]];
+    systemsButton.frame = CGRectMake(screenRect.origin.x + 4, screenRect.origin.y + 20, screenRect.size.width - 8, 40);
+    [systemsButton setTitle:curSystem.name forState:UIControlStateNormal];
+    [systemsButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [systemsButton setContentEdgeInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
+    [systemsButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1] forState:UIControlStateNormal];
+    systemsButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+    systemsButton.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+    [mapView_ addSubview:systemsButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,9 +109,27 @@
     return NO;
 }
 
+-(void) moveCameraToSystem
+{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[curSystem.latitude doubleValue]
+                                                            longitude:[curSystem.longitude doubleValue]
+                                                                 zoom:13];
+
+    [mapView_ setCamera:camera];
+}
+
+-(void) moveCameraToLocation
+{
+    if (mapView_.myLocation) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:mapView_.myLocation.coordinate zoom:15];
+        [mapView_ setCamera:camera];
+    }
+}
+
 - (void) refreshStationAvailability
 {
     NSLog(@"Refresh availability");
+    NSLog(@"My Location: %@", mapView_.myLocation);
     [sysManager updateStationAvailabilityForSystem:curSystem];
 }
 
@@ -118,5 +159,32 @@
     });
     
 }
+
+-(IBAction)showSystems:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a Bikeshare System"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    for (LNKSystem *system in self.systemArray) {
+        [actionSheet addButtonWithTitle:system.name];
+    }
+    
+    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
+    
+    [actionSheet showInView:self.view];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        curSystem = self.systemArray[buttonIndex];
+        [self.systemsButton setTitle:curSystem.name forState:UIControlStateNormal];
+        [self moveCameraToSystem];
+    }
+}
+
 
 @end
