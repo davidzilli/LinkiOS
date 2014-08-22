@@ -15,6 +15,9 @@
 @interface LNKMapViewController ()
 @property (nonatomic, strong) NSArray *systemArray;
 @property (nonatomic, strong) UIButton *systemsButton;
+@property (nonatomic, strong) UIButton *refreshButton;
+@property (nonatomic, strong) UIButton *locationButton;
+@property (nonatomic, strong) UIImageView *refreshProgressView;
 
 -(IBAction)showSystems:(id)sender;
 @end
@@ -26,6 +29,9 @@
 @synthesize sysManager;
 @synthesize curSystem;
 @synthesize systemsButton;
+@synthesize locationButton;
+@synthesize refreshButton;
+@synthesize refreshProgressView;
 @synthesize systemArray;
 
 
@@ -69,7 +75,7 @@
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [refreshButton setImage:[UIImage imageNamed:@"ic_refresh_floating"]  forState:UIControlStateNormal];
     [refreshButton setImage:[UIImage imageNamed:@"ic_refresh_floating_sel"] forState:UIControlStateHighlighted];
     [refreshButton sizeToFit];
@@ -77,15 +83,24 @@
     [refreshButton addTarget:self action:@selector(refreshStationAvailability) forControlEvents:UIControlEventTouchUpInside];
     [mapView_ addSubview:refreshButton];
     
-    UIButton *locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [locationButton setImage:[UIImage imageNamed:@"ic_location_floating_icon"] forState:UIControlStateNormal];
     [locationButton setImage:[UIImage imageNamed:@"ic_location_floating_icon_sel"] forState:UIControlStateHighlighted];
     [locationButton sizeToFit];
-    locationButton.center = CGPointMake(locationButton.bounds.size.width / 2 + 10, screenRect.size.height - (locationButton.bounds.size.height / 2) - 10);
+    locationButton.center = CGPointMake(refreshButton.center.x - (locationButton.bounds.size.width), screenRect.size.height - (locationButton.bounds.size.height / 2) - 10);
     [locationButton addTarget:self action:@selector(moveCameraToLocation) forControlEvents:UIControlEventTouchUpInside];
     [mapView_ addSubview:locationButton];
-
-    systemsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    refreshProgressView = [[UIImageView alloc] initWithFrame:refreshButton.frame];
+    [refreshProgressView setImage:[UIImage imageNamed:@"ic_square_floating"]];
+    UIActivityIndicatorView *refreshProgress = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    refreshProgress.center = CGPointMake(refreshProgressView.bounds.size.width / 2, refreshProgressView.bounds.size.height / 2);
+    [refreshProgressView addSubview:refreshProgress];
+    [mapView_ addSubview:refreshProgressView];
+    [refreshProgress startAnimating];
+    refreshProgressView.hidden = YES;
+                                                
+    systemsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [systemsButton addTarget:self action:@selector(showSystems:) forControlEvents:UIControlEventTouchUpInside];
     [systemsButton setBackgroundColor:[UIColor colorWithRed:0.396 green:0.757 blue:0.761 alpha:1]];
     systemsButton.frame = CGRectMake(screenRect.origin.x + 4, screenRect.origin.y + 20, screenRect.size.width - 8, 40);
@@ -122,7 +137,7 @@
 {
     if (mapView_.myLocation) {
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:mapView_.myLocation.coordinate zoom:15];
-        [mapView_ setCamera:camera];
+        [mapView_ animateToCameraPosition:camera];
     }
 }
 
@@ -130,6 +145,7 @@
 {
     NSLog(@"Refresh availability");
     NSLog(@"My Location: %@", mapView_.myLocation);
+    refreshProgressView.hidden = NO;
     [sysManager updateStationAvailabilityForSystem:curSystem];
 }
 
@@ -155,6 +171,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // Your code to run on the main queue/thread
         NSLog(@"Delegate Method Fired!");
+        refreshProgressView.hidden = YES;
         [self addMarkers];
     });
     
