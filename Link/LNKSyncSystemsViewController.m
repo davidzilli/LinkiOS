@@ -18,6 +18,7 @@
 
 -(IBAction)loadSelectSystemVC:(id)sender;
 -(IBAction)loadMapVC:(id)sender;
+-(IBAction)retrySync:(id)sender;
 
 @end
 
@@ -38,6 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _backgroundFrame.translatesAutoresizingMaskIntoConstraints = YES;
     
 }
 
@@ -119,9 +121,8 @@
 -(IBAction)loadSelectSystemVC:(id)sender
 {
     self.selectSystemVC = [[LNKSelectSystemViewController alloc] initWithNibName:@"LNKSelectSystemViewController" bundle:nil];
-    self.selectSystemVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:self.selectSystemVC
-                       animated:YES
+                       animated:NO
                      completion:^{
                          
                      }];

@@ -48,7 +48,7 @@
     // Do any additional setup after loading the view from its nib.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[curSystem.latitude doubleValue]
                                                             longitude:[curSystem.longitude doubleValue]
-                                                                 zoom:12];
+                                                                 zoom:13];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
