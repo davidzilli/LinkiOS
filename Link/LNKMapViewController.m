@@ -47,6 +47,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"View Did Load");
     [super viewDidLoad];
     
     /** Get default System */
@@ -67,12 +68,12 @@
     self.view = mapView_;
     
     [self addMarkers];
-    
-    [sysManager updateStationAvailabilityForSystem:curSystem];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    NSLog(@"View Will Appear");
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -111,6 +112,13 @@
     systemsButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     systemsButton.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
     [mapView_ addSubview:systemsButton];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"View Did Appear");
+    [sysManager updateStationAvailabilityForSystem:curSystem];
 }
 
 - (void)didReceiveMemoryWarning
